@@ -1,0 +1,48 @@
+# Ignore build directories
+/build/
+/out/
+/target/
+
+# Ignore IDE/project files
+.idea/
+.vscode/
+
+# Ignore compiled class files
+*.class
+
+# Ignore JAR, WAR, and EAR files
+*.jar
+*.war
+*.ear
+
+# Ignore log files
+*.log
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore temporary files created by editors
+*.swp
+*.swo
+
+# Ignore Maven/Gradle build files if using these tools
+/.mvn/
+/target/
+*.iml
+*.gradle
+/build/
+
+# Ignore IntelliJ IDEA-specific files
+.idea/
+
+# Ignore Eclipse-specific files
+.classpath
+.project
+.settings/
+
+# Ignore NetBeans-specific files
+nbproject/private/
+
+# Ignore environment files (for sensitive info like API keys, DB credentials)
+*.env
