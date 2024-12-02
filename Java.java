@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 
 public class URLShortener {
 
-    // URL Shortening logic
+  
     private static final String BASE_URL = "http://short.ly/";  // Base URL for shortening
     private static final String CHARSET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     private static final int SHORT_URL_LENGTH = 6;
@@ -18,7 +18,6 @@ public class URLShortener {
 
     private static AtomicInteger urlCount = new AtomicInteger(0);  // Tracks the number of URLs created
 
-    // Generate random short URL of fixed length
     private static String generateShortUrl() {
         StringBuilder shortUrl = new StringBuilder();
         Random rand = new Random();
@@ -28,14 +27,13 @@ public class URLShortener {
         return shortUrl.toString();
     }
 
-    // Shorten a URL and store it in maps
+ 
     private static String shortenUrl(String originalUrl, long expirationTime) {
         String shortUrl = generateShortUrl();
         while (urlMap.containsKey(shortUrl)) {  // Ensure uniqueness
             shortUrl = generateShortUrl();
         }
 
-        // Store URL mapping and expiration
         urlMap.put(shortUrl, originalUrl);
         expirationMap.put(shortUrl, expirationTime);
         clickCountMap.put(shortUrl, 0);  // Initially 0 clicks
@@ -44,7 +42,6 @@ public class URLShortener {
         return BASE_URL + shortUrl;
     }
 
-    // Retrieve original URL using the short URL
     private static String retrieveOriginalUrl(String shortUrl) {
         String shortUrlKey = shortUrl.replace(BASE_URL, "");
         if (urlMap.containsKey(shortUrlKey)) {
@@ -61,7 +58,6 @@ public class URLShortener {
         return null;
     }
 
-    // Get statistics for short URL
     private static String getUrlStats(String shortUrl) {
         String shortUrlKey = shortUrl.replace(BASE_URL, "");
         if (clickCountMap.containsKey(shortUrlKey)) {
@@ -78,17 +74,17 @@ public class URLShortener {
         return urlCount.get();
     }
 
-    // GUI for URL Shortener
+
     public static void main(String[] args) {
-        // Create the main frame
+      
         JFrame frame = new JFrame("URL Shortener");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Panel for URL shortening
+      
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
 
-        // Add components for shortening URLs
+       
         panel.add(new JLabel("Enter URL:"));
         JTextField urlField = new JTextField(30);
         panel.add(urlField);
@@ -100,12 +96,12 @@ public class URLShortener {
         JButton shortenButton = new JButton("Shorten URL");
         panel.add(shortenButton);
 
-        // Add result display area for shortened URL
+     
         JTextArea resultArea = new JTextArea(3, 40);
         resultArea.setEditable(false);
         panel.add(new JScrollPane(resultArea));
 
-        // Add components for retrieving original URL
+    
         panel.add(new JLabel("Enter Short URL:"));
         JTextField shortUrlField = new JTextField(30);
         panel.add(shortUrlField);
@@ -113,12 +109,12 @@ public class URLShortener {
         JButton retrieveButton = new JButton("Retrieve Original URL");
         panel.add(retrieveButton);
 
-        // Add result display area for original URL and stats
+      
         JTextArea statsArea = new JTextArea(5, 40);
         statsArea.setEditable(false);
         panel.add(new JScrollPane(statsArea));
 
-        // Shorten button action
+     
         shortenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -134,7 +130,7 @@ public class URLShortener {
             }
         });
 
-        // Retrieve button action
+   
         retrieveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
